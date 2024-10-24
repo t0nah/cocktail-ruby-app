@@ -1,0 +1,2 @@
+class AlcoholicFilter < ApplicationRecord
+end
