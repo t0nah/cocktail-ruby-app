@@ -1,17 +1,19 @@
+<div class="container">
+  <h1>Cocktail List</h1>
 
-<h1>Cocktail List</h1>
-
-<% if @cocktails %>
-  <% @cocktails.each do |cocktail| %>
-    <div>
-      <h2><%= cocktail["strDrink"] %></h2>
-      <p>Category: <%= cocktail["strCategory"] %></p>
-      <p>Glass: <%= cocktail["strGlass"] %></p>
-      <p>Content: <%= cocktail["strAlcoholic"] %></p>
-      <p>Instructions: <%= cocktail["strInstructions"] %></p>
-      <img src="<%= cocktail["strDrinkThumb"] %>" alt="<%= cocktail["strDrink"] %>" width="100">
-    </div>
-  <% end %>
-<% else %>
-  <p>No cocktails found.</p>
-<% end %>
+  <div class="row">
+    <% @cocktails.each do |cocktail| %>
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="<%= cocktail['strDrinkThumb'] %>" class="card-img-top" alt="<%= cocktail['strDrink'] %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= cocktail['strDrink'] %></h5>
+            <p class="card-text">Category: <%= cocktail['strCategory'] %></p>
+            <p class="card-text">Glass: <%= cocktail['strGlass'] %></p>
+            <p class="card-text">Instructions: <%= cocktail['strInstructions'] %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
