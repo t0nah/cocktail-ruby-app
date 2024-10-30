@@ -1,0 +1,17 @@
+
+<h1>Cocktail List</h1>
+
+<% if @cocktails %>
+  <% @cocktails.each do |cocktail| %>
+    <div>
+      <h2><%= cocktail["strDrink"] %></h2>
+      <p>Category: <%= cocktail["strCategory"] %></p>
+      <p>Glass: <%= cocktail["strGlass"] %></p>
+      <p>Content: <%= cocktail["strAlcoholic"] %></p>
+      <p>Instructions: <%= cocktail["strInstructions"] %></p>
+      <img src="<%= cocktail["strDrinkThumb"] %>" alt="<%= cocktail["strDrink"] %>" width="100">
+    </div>
+  <% end %>
+<% else %>
+  <p>No cocktails found.</p>
+<% end %>
