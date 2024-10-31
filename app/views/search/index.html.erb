@@ -1,0 +1,10 @@
+<h2><%= @results.any? ? "Search Results" : "No Results" %></h2>
+<ul>
+  <% if @results.any? %>
+    <% @results.each do |cocktail| %>
+      <li><%= cocktail["strDrink"] %></li>
+    <% end %>
+  <% else %>
+    <p>No results found for "<%= params[:query] %>"</p>
+  <% end %>
+</ul>

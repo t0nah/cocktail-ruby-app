@@ -10,8 +10,6 @@
 
 require 'net/http'
 require 'json'
-require 'net/http'
-require 'json'
 
 # Clear existing records
 Cocktail.destroy_all
