@@ -1,13 +1,52 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for(:title) || "Cocktailsdb" %></title>
-      <nav>
-        <%= link_to 'Home', root_path %> |
-        <%= link_to 'About', about_path %>
-      </nav>
-      <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-  <body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title><%= content_for(:title) || "Cocktailsdb" %></title>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+  <!--Navigation Bar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="<%= root_path %>">CocktailsDB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+          <%= link_to 'Home', root_path, class: 'nav-link' %>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'About', about_path, class: 'nav-link' %>
+        </li>
+      </ul>
+
+      <!-- Search Form -->
+      <form class="form-inline my-2 my-lg-0" action="<%= search_path %>" method="get">
+        <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search cocktails" aria-label="Search">
+
+        <select class="form-control mr-sm-2" name="category">
+          <option value="">All Categories</option>
+          <% @categories.each do |category| %>
+            <option value="<%= category.id %>"><%= category.name %></option>
+          <% end %>
+        </select>
+
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="container mt-4">
     <%= yield %>
-  </body>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2poT1n4MR0sA7tUOH2R8jNJp+8mMzPXU6C9HgGATKqDfqciE6z2" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-AgmQQYV5ZwRQZrFUxCrM8LYtC1gyXa3WTKpTOr5p1c5F7sFXgy27nTMh13D8TBXf" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wewS36z3Fb5T7ZzjxPQFad5Q3uQErj2u7rTrb1xxI3QlTwWxRFTaTvZ0cQtFl1r4" crossorigin="anonymous"></script>
+</body>
 </html>

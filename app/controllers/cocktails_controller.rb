@@ -11,5 +11,13 @@ class CocktailsController < ApplicationController
   end
 
   def show
+    @cocktail = Cocktail.find(params[:id])
+  end
+
+  def search
+    @query = params[:query]
+    @category = params[:category]
+    @cocktails = Cocktail.where('name LIKE ?', "%#{@query}%")
+    render :index
   end
 end
