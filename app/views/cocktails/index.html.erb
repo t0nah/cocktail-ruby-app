@@ -9,29 +9,25 @@
 <body>
 
 <div class="container my-4 mb-2">
-    <h1>Cocktail List</h1>
-  <%= paginate @cocktails %>
-    <div class="row font-weight-bold border-bottom pb-2">
+    <h1 class ="mb-2">Cocktail List</h1>
+    <div class="pagination justify-content-end mt-2"><%= paginate @cocktails %></div>
+    <div class="row font-weight-bold border-top pt-2 border-bottom pb-2">
         <div class="col-2">Image</div>
         <div class="col-2">Name</div>
-        <div class="col-2">Category</div>
         <div class="col-2">Glass</div>
-        <div class="col-4">Instructions</div>
+
     </div>
 
     <% if @cocktails.any? %>
         <% @cocktails.each do |cocktail| %>
-            <div class="row py-3 border-bottom align-items-center">
+            <div class="row py-2 border-bottom align-items-center">
                 <!-- Image column -->
                 <div class="col-2">
                   <img src="<%= cocktail['strDrinkThumb'] %>" alt="<%= cocktail['strDrink'] %>" class="img-fluid" style="width: 100px; height: auto;">
                 </div>
-
-                <!-- Cocktail details-->
                 <div class="col-2"><%= cocktail['strDrink'] %></div>
-                <div class="col-2"><%= cocktail['strCategory'] %></div>
                 <div class="col-2"><%= cocktail['strGlass'] %></div>
-                <div class="col-4"><%= cocktail['strInstructions'] %></div>
+
             </div>
         <% end %>
     <% else %>
@@ -41,6 +37,7 @@
             </div>
         </div>
     <% end %>
+    <div class="pagination justify-content-end mt-2"><%= paginate @cocktails %></div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
