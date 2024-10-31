@@ -1,19 +1,66 @@
-<div class="container">
-  <h1>Cocktail List</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cocktail List</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
 
-  <div class="row">
-    <% @cocktails.each do |cocktail| %>
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="<%= cocktail['strDrinkThumb'] %>" class="card-img-top" alt="<%= cocktail['strDrink'] %>">
-          <div class="card-body">
-            <h5 class="card-title"><%= cocktail['strDrink'] %></h5>
-            <p class="card-text">Category: <%= cocktail['strCategory'] %></p>
-            <p class="card-text">Glass: <%= cocktail['strGlass'] %></p>
-            <p class="card-text">Instructions: <%= cocktail['strInstructions'] %></p>
-          </div>
+<div class="container my-4 mb-2">
+    <h1>Cocktail List</h1>
+
+    <!-- Headers for column content -->
+    <div class="row font-weight-bold border-bottom pb-2">
+        <div class="col-2">Image</div>
+        <div class="col-2">Name</div>
+        <div class="col-2">Category</div>
+        <div class="col-2">Glass</div>
+        <div class="col-4">Instructions</div>
+    </div>
+
+    <% if @cocktails.any? %>
+        <% @cocktails.each do |cocktail| %>
+            <div class="row py-3 border-bottom align-items-center">
+                <!-- Image column -->
+                <div class="col-2">
+                    <% if cocktail['strDrinkThumb'] %>
+                        <img src="<%= cocktail['strDrinkThumb'] %>" alt="<%= cocktail['strDrink'] %>" class="img-fluid" style="width: 100px; height: auto;">
+                    <% else %>
+                        <p>No Image</p>
+                    <% end %>
+                </div>
+
+                <!-- Cocktail details-->
+                <div class="col-2"><%= cocktail['strDrink'] %></div>
+                <div class="col-2"><%= cocktail['strCategory'] %></div>
+                <div class="col-2"><%= cocktail['strGlass'] %></div>
+                <div class="col-4"><%= cocktail['strInstructions'] %></div>
+            </div>
+        <% end %>
+    <% else %>
+        <div class="row py-3">
+            <div class="col text-center">
+                <p>No cocktails available currently.</p>
+            </div>
         </div>
-      </div>
     <% end %>
-  </div>
+
+    <nav aria-label="Page navigation example" class="mt-4">
+        <ul class="pagination justify-content-center">
+            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+            <li class="page-item"><a class="page-link" href="#">1</a></li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>
+    </nav>
 </div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2poT1n4MR0sA7tUOH2R8jNJp+8mMzPXU6C9HgGATKqDfqciE6z2" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-AgmQQYV5ZwRQZrFUxCrM8LYtC1gyXa3WTKpTOr5p1c5F7sFXgy27nTMh13D8TBXf" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wewS36z3Fb5T7ZzjxPQFad5Q3uQErj2u7rTrb1xxI3QlTwWxRFTaTvZ0cQtFl1r4" crossorigin="anonymous"></script>
+
+</body>
+</html>
