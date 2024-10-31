@@ -1,2 +1,10 @@
 <h1>Cocktails#show</h1>
-<p>Find me in app/views/cocktails/show.html.erb</p>
+<h1><%= @cocktail["strDrink"] %></h1>
+
+<div class="cocktail-details">
+  <p><strong>Category:</strong> <%= @cocktail["strCategory"] %></p>
+  <p><strong>Glass:</strong> <%= @cocktail["strGlass"] %></p>
+  <p><strong>Instructions:</strong> <%= @cocktail["strInstructions"] %></p>
+  <h3>Image:</h3>
+  <%= image_tag @cocktail["strDrinkThumb"], class: "img-fluid" if @cocktail["strDrinkThumb"] %>
+</div>

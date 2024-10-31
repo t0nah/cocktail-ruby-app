@@ -25,6 +25,7 @@ class CocktailsController < ApplicationController
 
 
   def show
+    @cocktail = get_cocktail(params[:id])
   end
 
   def search
