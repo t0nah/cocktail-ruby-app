@@ -7,7 +7,6 @@ class CocktailsController < ApplicationController
 
     ('a'..'z').each do |letter|
       break if all_cocktails.size >= 100
-
       url = URI("https://www.thecocktaildb.com/api/json/v1/1/search.php?f=#{letter}")
 
       # Make the API request
@@ -22,7 +21,6 @@ class CocktailsController < ApplicationController
 
     @cocktails = Kaminari.paginate_array(all_cocktails).page(params[:page]).per(10)
   end
-
 
   def show
     @cocktail = get_cocktail(params[:id])
