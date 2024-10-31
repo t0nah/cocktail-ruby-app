@@ -31,4 +31,11 @@ class CocktailsController < ApplicationController
   def search
     redirect_to cocktails(query: params[:query])
   end
+
+  def get_cocktail(id)
+    url = URI("https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=#{id}")
+    response = Net::HTTP.get(url)
+    data = JSON.parse(response)
+    data["drinks"]&.first
+  end
 end

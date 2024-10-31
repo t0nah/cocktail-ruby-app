@@ -6,7 +6,9 @@
     <div class="row font-weight-bold border-top pt-2 border-bottom pb-2">
         <div class="col-2">Image</div>
         <div class="col-2">Name</div>
+        <div class="col-2">Category</div>
         <div class="col-2">Glass</div>
+
     </div>
 
     <% if @cocktails.any? %>
@@ -15,7 +17,8 @@
                 <div class="col-2">
                   <img src="<%= cocktail['strDrinkThumb'] %>" alt="<%= cocktail['strDrink'] %>" style="width: 100px; height: auto;">
                 </div>
-                <div class="col-2"><%= cocktail['strDrink'] %></div>
+                <div class="col-2"><%= link_to cocktail["strDrink"], cocktail_path(cocktail["idDrink"]) %></div>
+                <div class="col-2"><%= cocktail['strCategory'] %></div>
                 <div class="col-2"><%= cocktail['strGlass'] %></div>
             </div>
         <% end %>
