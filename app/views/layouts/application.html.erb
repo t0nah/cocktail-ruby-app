@@ -14,14 +14,15 @@
         <li class="nav-item"><%= link_to 'About', about_path, class: 'nav-link' %></li>
       </ul>
 
-    <div class="input-group">
-      <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Search cocktails" %>
-      <div class="input-group-append">
-        <%= submit_tag "Search", class: "btn btn-outline-success" %>
+      <form class="form-inline" action="<%= search_path %>" method="get">
+      <div class="input-group">
+        <input type="text" name="query" id="query" class="form-control" placeholder="Search cocktails">
+        <div class="input-group-append">
+          <input type="submit" name="commit" value="Search" class="btn btn-outline-success">
+        </div>
       </div>
-    </div>
-
-  </nav>
+    </form>
+    </nav>
 
     <%= yield %>
 <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
