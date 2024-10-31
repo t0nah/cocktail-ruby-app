@@ -10,48 +10,46 @@
 
 require 'net/http'
 require 'json'
+require 'net/http'
+require 'json'
 
-def fetch_categories
-  url = URI("https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list")
-  response = Net::HTTP.get(url)
-  data = JSON.parse(response)
+# Clear existing records
+Cocktail.destroy_all
+Category.destroy_all
+Glass.destroy_all
+Ingredient.destroy_all
+AlcoholicFilter.destroy_all
 
-  data["drinks"].each do |category|
-    Category.create!(name: category["strCategory"])
-  end
+# Define API URLs
+CATEGORY_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?c=list"
+GLASS_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list"
+INGREDIENT_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list"
+ALCOHOLIC_FILTER_URL = "https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list"
+
+# Fetch and create categories
+response = Net::HTTP.get(URI(CATEGORY_URL))
+categories = JSON.parse(response)["drinks"]
+categories.each do |category|
+  Category.find_or_create_by!(name: category["strCategory"])
 end
 
-def fetch_glasses
-  url = URI("https://www.thecocktaildb.com/api/json/v1/1/list.php?g=list")
-  response = Net::HTTP.get(url)
-  data = JSON.parse(response)
-
-  data["drinks"].each do |glass|
-    Glass.create!(name: glass["strGlass"])
-  end
+# Fetch and create glasses
+response = Net::HTTP.get(URI(GLASS_URL))
+glasses = JSON.parse(response)["drinks"]
+glasses.each do |glass|
+  Glass.find_or_create_by!(name: glass["strGlass"])
 end
 
-def fetch_ingredients
-  url = URI("https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list")
-  response = Net::HTTP.get(url)
-  data = JSON.parse(response)
-
-  data["drinks"].each do |ingredient|
-    Ingredient.create!(name: ingredient["strIngredient1"])
-  end
+# Fetch and create ingredients
+response = Net::HTTP.get(URI(INGREDIENT_URL))
+ingredients = JSON.parse(response)["drinks"]
+ingredients.each do |ingredient|
+  Ingredient.find_or_create_by!(name: ingredient["strIngredient1"])
 end
 
-def fetch_alcoholic_filters
-  url = URI("https://www.thecocktaildb.com/api/json/v1/1/list.php?a=list")
-  response = Net::HTTP.get(url)
-  data = JSON.parse(response)
-
-  data["drinks"].each do |filter|
-    AlcoholicFilter.create!(name: filter["strAlcoholic"])
-  end
+# Fetch and create alcoholic filters
+response = Net::HTTP.get(URI(ALCOHOLIC_FILTER_URL))
+filters = JSON.parse(response)["drinks"]
+filters.each do |filter|
+  AlcoholicFilter.find_or_create_by!(name: filter["strAlcoholic"])
 end
-
-fetch_categories
-fetch_glasses
-fetch_ingredients
-fetch_alcoholic_filters

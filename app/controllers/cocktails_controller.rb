@@ -19,8 +19,8 @@ class CocktailsController < ApplicationController
         all_cocktails = all_cocktails.take(100)
       end
     end
-
     @cocktails = all_cocktails
+    @cocktails = Kaminari.paginate_array(all_cocktails).page(params[:page]).per(10)
   end
 
 

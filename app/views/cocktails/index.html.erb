@@ -10,8 +10,7 @@
 
 <div class="container my-4 mb-2">
     <h1>Cocktail List</h1>
-
-    <!-- Headers for column content -->
+  <%= paginate @cocktails %>
     <div class="row font-weight-bold border-bottom pb-2">
         <div class="col-2">Image</div>
         <div class="col-2">Name</div>
@@ -25,11 +24,7 @@
             <div class="row py-3 border-bottom align-items-center">
                 <!-- Image column -->
                 <div class="col-2">
-                    <% if cocktail['strDrinkThumb'] %>
-                        <img src="<%= cocktail['strDrinkThumb'] %>" alt="<%= cocktail['strDrink'] %>" class="img-fluid" style="width: 100px; height: auto;">
-                    <% else %>
-                        <p>No Image</p>
-                    <% end %>
+                  <img src="<%= cocktail['strDrinkThumb'] %>" alt="<%= cocktail['strDrink'] %>" class="img-fluid" style="width: 100px; height: auto;">
                 </div>
 
                 <!-- Cocktail details-->
@@ -46,21 +41,11 @@
             </div>
         </div>
     <% end %>
-
-    <nav aria-label="Page navigation example" class="mt-4">
-        <ul class="pagination justify-content-center">
-            <li class="page-item"><a class="page-link" href="#">Previous</a></li>
-            <li class="page-item"><a class="page-link" href="#">1</a></li>
-            <li class="page-item"><a class="page-link" href="#">2</a></li>
-            <li class="page-item"><a class="page-link" href="#">3</a></li>
-            <li class="page-item"><a class="page-link" href="#">Next</a></li>
-        </ul>
-    </nav>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2poT1n4MR0sA7tUOH2R8jNJp+8mMzPXU6C9HgGATKqDfqciE6z2" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-AgmQQYV5ZwRQZrFUxCrM8LYtC1gyXa3WTKpTOr5p1c5F7sFXgy27nTMh13D8TBXf" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wewS36z3Fb5T7ZzjxPQFad5Q3uQErj2u7rTrb1xxI3QlTwWxRFTaTvZ0cQtFl1r4" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" ></script>
 
 </body>
 </html>
