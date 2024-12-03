@@ -104,7 +104,7 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     drb (2.2.1)
-    error_highlight (0.6.0)
+    error_highlight (0.7.0)
     erubi (1.13.0)
     execjs (2.10.0)
     ffi (1.17.0)
@@ -214,10 +214,6 @@ GEM
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
     rake (13.2.1)
-    ransack (4.2.1)
-      activerecord (>= 6.1.5)
-      activesupport (>= 6.1.5)
-      i18n
     rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
@@ -320,7 +316,6 @@ DEPENDENCIES
   kaminari
   puma (>= 5.0)
   rails (~> 7.2.1)
-  ransack
   rubocop-rails-omakase
   sassc-rails
   selenium-webdriver
